@@ -18,13 +18,16 @@ private HerokuPage herokuPage = new HerokuPage();
     public void homePage (){}
 
 // Heroku login senario
-@When("^I enter username as “n12345@test.com” and password as “123456”$")
-    public void enterUserName(){}
+@When("^I enter username as “(.+)” and password as “(.+)”$")
+    public void enterUserName(String userName,String password)throws InterruptedException{
+    herokuPage.clickSignInButton();
+    herokuPage.enterEmailUsername(userName,password);
+}
 
  @And("^I click on submit button$")
-    public void clickonSubmitButton (){}
+    public void clickonSubmitButton ()throws InterruptedException{herokuPage.clickSubmit();}
 
-  @Then("^I verify logout button is displayed$")
-    public void verifyLogoutButtonDisplayed(){}
+  @Then("^I verify (.+) button is displayed$")
+    public void verifyLogoutButtonDisplayed(String text)throws InterruptedException{herokuPage.verifyLogoutButton(text);}
 
 }

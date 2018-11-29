@@ -86,4 +86,15 @@ public class BasePage {
 		return Integer.parseInt(result);
 	}
 
+	public void dropDownValue(By locator,String expectedText){
+		List<WebElement>dropDownList = SharedSD.getDriver().findElements(locator);
+		for(WebElement list: dropDownList) {
+
+			if (list.getText().equals(expectedText)){
+				break;
+
+			}
+		}
+	}
+
 }
