@@ -14,20 +14,20 @@ public class HerokuPage extends BasePage {
     private By autoCompleteSearch = By.xpath("//span[@id='algolia-autocomplete-listbox-0']");
 
 
-    public void clickSignInButton() throws InterruptedException {
+    public void clickSignInButton()  {
         clickOn(signIn);
     }
 
-    public void enterEmailUsername(String userName, String password) throws InterruptedException {
+    public void enterEmailUsername(String userName, String password)  {
         sendText(email, userName);
         sendText(passwordSignin, password);
     }
 
-    public void clickSubmit() throws InterruptedException {
+    public void clickSubmit()  {
         clickOn(submitButton);
     }
 
-    public void verifyLogoutButton(String text) throws InterruptedException {
+    public void verifyLogoutButton(String text)  {
         dropDownValue(accountIcon, text);
     }
 
@@ -35,7 +35,7 @@ public class HerokuPage extends BasePage {
         sendText(searchTextField, text);
     }
 
-    public void verifyAutoCompleteDisplayed(String text) throws InterruptedException {
+    public void verifyAutoCompleteDisplayed(String text)  {
         dropDownValue(autoCompleteSearch, text);
     }
 
