@@ -34,7 +34,6 @@ public class BasePage {
         return element;
     }
 
-
     public void clickOn(By locator)  {
 
         try{
