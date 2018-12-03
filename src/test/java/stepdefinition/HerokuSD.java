@@ -1,5 +1,6 @@
 package stepdefinition;
 
+import cucumber.api.PendingException;
 import framework.page_object_model_web.HerokuPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -50,11 +51,10 @@ public class HerokuSD {
         herokuPage.verifyAutoCompleteDisplayed(text);
     }
 
-    // Verify valid registration
-
+    //     Verify valid registration
     @Given("^I am on Registration page$")
 
-    public void RegistrationPage() {
+    public void registrationPage() {
         herokuPage.clickOnJoinButton();
     }
 
@@ -65,26 +65,25 @@ public class HerokuSD {
 
     @And("^I click 'submit' button$")
 
-    public void ClickSubmit() {
+    public void Submit() {
         herokuPage.clickSubmit();
     }
 
     @Then("^I am signed-in as a new user$")
-    public void newUserSignIn() {
+    public void UserSignIn() {
         herokuPage.verifyRegistrationMessage();
     }
 
     //     Verify invalid email on registration
+    @When("^I enter name as \"([^\"]*)\" email as ([^\"]*) password as \"([^\"]*)\"$")
+    public void iEnterNameAsEmailAsEmailPasswordAs(String userName, String email, String password)  {
+        herokuPage.clickOnJoinButton();
+        herokuPage.enterRegInfo(userName, email, password);
+        herokuPage.clickSubmit();
+    }
 
-//    @When("^I enter name as \"(.+)\" email as <email> password as \"(.+)\"$")
-//    public void invalidInformation() {
-//    }
-//
-//    @Then("^$I verify invalid email address")
-//    public void VerifyInvalidEmail() {
-//    }
-
-
+    @Then("^I verify invalid email address$")
+    public void iVerifyInvalidEmailAddress() { }
 }
 
 

@@ -27,7 +27,7 @@ public class HerokuPage extends BasePage {
         clickOn(signInButton);
     }
 
-    public void veryLogInPageTitle(){
+    public void veryLogInPageTitle() {
         String message = getText(loginPageTitle);
         stringUtil.compareText(loginPageTitle, message);
 
@@ -63,12 +63,23 @@ public class HerokuPage extends BasePage {
         sendText(userNameTextField, userName);
         sendText(emailTextField, email);
         sendText(passwordTextField, password);
+
     }
 
     public void verifyRegistrationMessage() {
         String message = getText(logInMessage);
         stringUtil.compareText(logInMessage, message);
     }
+
+
+    public void enterRegInfo(String userName, String email, String password) {
+        sendText(userNameTextField, userName);
+        sendText(emailTextField, email);
+        sendText(passwordTextField, password);
+
+    }
+
+
 
 }
 
