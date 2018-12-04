@@ -52,6 +52,7 @@ public class HerokuSD {
     }
 
     //     Verify valid registration
+
     @Given("^I am on Registration page$")
 
     public void registrationPage() {
@@ -75,15 +76,44 @@ public class HerokuSD {
     }
 
     //     Verify invalid email on registration
+
     @When("^I enter name as \"([^\"]*)\" email as ([^\"]*) password as \"([^\"]*)\"$")
-    public void iEnterNameAsEmailAsEmailPasswordAs(String userName, String email, String password)  {
+    public void iEnterNameAsEmailAsEmailPasswordAs(String userName, String email, String password) {
         herokuPage.clickOnJoinButton();
         herokuPage.enterRegInfo(userName, email, password);
         herokuPage.clickSubmit();
     }
 
     @Then("^I verify invalid email address$")
-    public void iVerifyInvalidEmailAddress() { }
+    public void iVerifyInvalidEmailAddress() {
+    }
+
+    // Verify all post
+
+    @Then("^I verify (.+) total post is displayed$")
+    public void verifyPost(int posts) {
+        herokuPage.verifyAllPost(posts);
+
+    }
+
+    @And("^I verify all post has price tag$")
+    public void verifyPriceTag(){
+        herokuPage.verifyAllPriceTags();
+
+    }
+
+    @And("^I verify all post has title$")
+    public void verifyPostTitle() {
+        herokuPage.verifyAllPostTitle();
+
+    }
+
+    @And("^I verify all post has displayed image$")
+    public void verifyDisplayedImage() {
+        herokuPage.verifyAllDisplayedImage();
+
+    }
+
 }
 
 

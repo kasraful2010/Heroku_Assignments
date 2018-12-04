@@ -1,8 +1,14 @@
 package framework.page_object_model_web;
 
 import framework.actions_web.BasePage;
+import org.apache.http.util.Asserts;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import stepdefinition.SharedSD;
 import util.StringUtil;
+
+import java.util.List;
 
 public class HerokuPage extends BasePage {
 
@@ -21,7 +27,11 @@ public class HerokuPage extends BasePage {
     private By emailTextField = By.xpath("//input[@name='email']");
     private By passwordTextField = By.xpath("//input[@name='password']");
     private By logInMessage = By.xpath("//div[@class='alert alert-success alert-dismissible']");
-
+    private By homePage = By.xpath("//a[@class='navbar-brand']");
+    private By allPost = By.xpath("//div[@class='container section']//descendant::div[@class='gig-card']");
+    private By allTag = By.xpath("//div[@class='container section']//descendant::h3");
+    private By allTitle = By.xpath("//div[@class='container section']//descendant::h4");
+    private By allImg = By.xpath("//div[@class='container section']//descendant::img");
 
     public void clickSignInButton() {
         clickOn(signInButton);
@@ -79,7 +89,30 @@ public class HerokuPage extends BasePage {
 
     }
 
+    public void clickOnHomePage() {clickOn(homePage);}
 
+    public void verifyAllPost(int posts) {
+        clickOnHomePage();
+      List<WebElement> elements = SharedSD.getDriver().findElements(allPost);
+        int numPost = elements.size();
+        Assert.assertTrue(numPost == posts);
+    }
+
+    public void verifyAllPriceTags () {
+        elementIsDisplayed(allTag);
+
+    }
+
+    public void verifyAllPostTitle(){
+        elementIsDisplayed(allTitle);
+
+    }
+
+    public void verifyAllDisplayedImage(){
+
+        elementIsDisplayed(allImg);
+
+    }
 
 }
 

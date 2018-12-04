@@ -23,12 +23,19 @@ Feature: herokuApp
     Then I am signed-in as a new user
 
   @heroku-invalid-email
-   Scenario Outline: Verify invalid email on registration
+  Scenario Outline: Verify invalid email on registration
 
     When I enter name as "testuser" email as <email> password as "test12345"
     Then I verify invalid email address
 
-  Examples:
-  | email |
-  | test.com |
-  | test@test@test.com |
+    Examples:
+      | email              |
+      | test.com           |
+      | test@test@test.com |
+
+  @heroku-total-post
+  Scenario: Verify total number of posts on home page
+    Then I verify 94 total post is displayed
+    And I verify all post has price tag
+    And I verify all post has title
+    And  I verify all post has displayed image

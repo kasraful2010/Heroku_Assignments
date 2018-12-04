@@ -105,5 +105,17 @@ public class BasePage {
         }
     }
 
+    public void elementIsDisplayed (By locator) {
+        List<WebElement> elements = SharedSD.getDriver().findElements(locator);
+        for (WebElement ele : elements) {
+            if (ele.isDisplayed()){
+                System.out.println("Present");
+                break;
+            }
+        }
+
+    }
+
+
 
 }
